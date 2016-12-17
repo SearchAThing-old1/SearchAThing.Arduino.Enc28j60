@@ -16,13 +16,13 @@ Here up you can see an Arduino Nano v3 connected to the ethernet through an Enc2
 
 | example | description |
 |---|---|
-| [Basic (static ip)] | Basic networking using static ip address |
-| [Basic (dynamic)] | Basic networking using dynamic ip address |
-| [SRUDP] | About SRUDP protocol |
-| [SRUDP (echo client)] | Echo client using SRUDP protocol |
-| [SRUDP (echo server)] | Echo server using SRUDP protocol |
-| [SRUDP-TCP-Bridge] | Connect to an SRUDP Arduino server through telnet using an SRUDP-TCP-Bridge application |
-| [Arduino Servo] | Drive arduino from C# using Arduino Servo Client |
+| [Basic (static ip)](#basic-static-ip) | Basic networking using static ip address |
+| [Basic (dynamic)](#basic-dynamic-dhcp) | Basic networking using dynamic ip address |
+| [SRUDP](#srudp) | About SRUDP protocol |
+| [SRUDP (echo client)](#srudp-echo-client) | Echo client using SRUDP protocol |
+| [SRUDP (echo server)](#srudp-echo-client) | Echo server using SRUDP protocol |
+| [SRUDP-TCP-Bridge](#srudp-tcp-bridge) | Connect to an SRUDP Arduino server through telnet using an SRUDP-TCP-Bridge application |
+| [Arduino Servo](#arduino-servo) | Drive arduino from C# using Arduino Servo Client |
 
 ## Source code
 
@@ -706,10 +706,13 @@ To issue commands and read results use SRUDP read and write functions available 
 States from how much time the device is up. 
 
 *Syntax*
+
 `uptime<nl>`
 
 *Return value*
+
 Retrieve the uptime in format days.milliseconds
+
 `OK<nl><days>.<milliseconds><nl>`
 
 ##### Available RAM
@@ -717,10 +720,13 @@ Retrieve the uptime in format days.milliseconds
 Retrieve the quantity of available RAM in the Arduino. If <type> is 0 then the total fragment memory sum is reported, otherwise (eg. <type> is 1) the maximum contiguous block size is returned
 
 *Syntax*
+
 `free <type><nl>`
 
 *Return value*
+
 Return the sum of fragmented available ram <free-ram-bytes> if <type was 0, the maximum contiguous block otherwise.
+
 `OK<nl><free-ram-bytes><nl>`
 
 ##### DS18B20 - PortSetup
@@ -728,10 +734,13 @@ Return the sum of fragmented available ram <free-ram-bytes> if <type was 0, the 
 Set the port where the ds18b20 temperature sensor are connected. It must be a digital port
 
 *Syntax*
+
 `ds18b20_setup <port><nl>`
 
 *Return value*
+
 ds18b20 port setup completed
+
 `OK<nl>`
 
 ##### DS18B20 - Get device count
@@ -739,13 +748,17 @@ ds18b20 port setup completed
 Retrieve the count of ds18b20 sensor connected to the port configured.
 
 *Syntax*
+
 `ds18b20_count<nl>`
 
 *Return value*
+
 Return the <count> quantity of temperature sensor detected
+
 `OK<nl><count><nl>`
 
 Error <err-msg> occurred: MissingSetup
+
 `ERR <err-msg><nl>`
 
 ##### DS18B20 - Get temperature Celsius
@@ -753,10 +766,13 @@ Error <err-msg> occurred: MissingSetup
 Retrieve the temperature (Celsius) of the sensor with given index ( first = 0 ).
 
 *Syntax*
+
 `ds18b20_get <idx><nl>`
 
 *Return value*
+
 Return the temperature (Celsius) converted from the device at the given index
+
 `OK<nl><temperature_C><nl>`
 
 ##### Set digital port mode
@@ -764,17 +780,23 @@ Return the temperature (Celsius) converted from the device at the given index
 Set a digital port mode for input ( <mode> = IN ) or output ( <mode> = OUT )
 
 *Syntax*
+
 `digital_setup <port> <mode><nl>`
 
 *Example*
+
 Set the D3 as output
+
 `digital_setup 3 OUT`
 
 *Return value*
+
 Operation completed.
+
 `OK<nl>`
 
 An <err-msg> occurred: InvalidSyntax
+
 `ERR <err-msg><nl>`
 
 ##### Digital port write
@@ -782,17 +804,23 @@ An <err-msg> occurred: InvalidSyntax
 Set value of given digital port
 
 *Syntax*
+
 `digital_write <port> <value><nl>`
 
 *Example*
+
 Set the D3 to value 255
+
 `digital_setup 3 255`
 
 *Return value*
+
 Operation completed.
+
 `OK<nl>`
 
 An <err-msg> occurred: InvalidSyntax
+
 `ERR <err-msg><nl>`
 
 ##### Digital port read
@@ -800,13 +828,17 @@ An <err-msg> occurred: InvalidSyntax
 Get value of given digital port
 
 *Syntax*
+
 `digital_read <port><nl>`
 
 *Return value*
+
 Return the digital port current value.
+
 `OK<nl><value><nl>`
 
 An <err-msg> occurred: InvalidSyntax
+
 `ERR <err-msg><nl>`
 
 ##### Analog port read
@@ -814,13 +846,17 @@ An <err-msg> occurred: InvalidSyntax
 Get value of given analog port. Note: use numeric value to specify the <port> ( ex. A2 = 2 ). 
 
 *Syntax*
+
 `analog_read <port><nl>`
 
 *Return value*
+
 Return the analog port current value.
+
 `OK<nl><value><nl>`
 
 An <err-msg> occurred: InvalidSyntax
+
 `ERR <err-msg><nl>`
 
 ##### Analog port read pack
@@ -828,13 +864,17 @@ An <err-msg> occurred: InvalidSyntax
 Get value of given analog port for as many samples specified. Note: use numeric value to specify the <port> ( ex. A2 = 2 ).
 
 *Syntax*
+
 `analog_read_pack <port> <samples-count><nl>`
 
 *Return value*
+
 Each 10bit sample will be stored in two bytes, so <data-pack> will be 2x<samples-count> bytes
+
 `OK<nl><data-pack>`
 
 An <err-msg> occurred: InvalidSyntax, OutOfMemory, SamplesOutOfPkt
+
 `ERR <err-msg><nl>`
 
 ### Example
