@@ -681,11 +681,11 @@ free blk=893 frg=1036
 
 | item | description |
 |---|---|
-| telnet 192.168.0.80 51000 | Connect to the SRUDP-TCP-Bridge |
-| conn 192.168.0.40 50000 | Connect to the Arduino SRUDP echo server |
-| waln test1 | Write an ASCII line "test1" |
-| rbin | Read binary data. The use of "raln" not work here cause sent message not contains the newline and the received back message could not identified as a line without that, so here rbin ensure to read data even there is no newline |
-| quit | close connection |
+| `telnet 192.168.0.80 51000` | Connect to the SRUDP-TCP-Bridge |
+| `conn 192.168.0.40 50000` | Connect to the Arduino SRUDP echo server |
+| `waln test1` | Write an ASCII line "test1" |
+| `rbin` | Read binary data. The use of "raln" not work here cause sent message not contains the newline and the received back message could not identified as a line without that, so here rbin ensure to read data even there is no newline |
+| `quit` | close connection |
 
 The arduino SRUDP server read failed messages are caused by the SRUDP echo server that expects some message until we issue the quit command to close the connection. 
 
