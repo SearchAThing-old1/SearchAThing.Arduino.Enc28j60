@@ -907,7 +907,3 @@ namespace SearchAThing.Arduino.Servo.ClientTest
 - establish a connection to an Arduino servo 192.168.0.40:50000 by using the SRUDP-TCP-Bridge 192.168.0.80:51000
 - forever loop 
 	- read value from adc and convert to voltage
-	
-#### Demo
-
-A demo its available [here](https://www.youtube.com/watch?v=0una39qpdIM)
